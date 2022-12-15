@@ -17,3 +17,13 @@ $white: hsl(0, 0%, 100%);
   color: $white;
   transition: all 0.2s;
 }
+
+.light-element {
+  background-color: $white;
+  transition: all 0.2s;
+}
+
+.dark-element {
+  background-color: $dark-blue;
+  transition: all 0.2s;
+}
