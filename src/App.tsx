@@ -1,14 +1,19 @@
 import './App.css'
 import Header from "./Components/Header/Header";
-import {useState} from "react";
+import {useEffect, useState} from "react";
 
 const App = (): JSX.Element => {
-    const [darkMode, setDarkMode] = useState(false);
+    const [theme, setTheme] = useState(localStorage.getItem('theme') || 'light');
+
+    useEffect((): void => {
+        localStorage.setItem('theme', theme)
+        document.body.className = theme
+    }, [theme])
 
     return (
-        <div className="App">
-            <Header darkMode={darkMode} setDarkMode={setDarkMode}/>
-        </div>
+        <main className={`App ${theme}`}>
+            <Header theme={theme} setTheme={setTheme}/>
+        </main>
     )
 }
 

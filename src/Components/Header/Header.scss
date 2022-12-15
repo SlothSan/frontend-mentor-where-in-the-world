@@ -1,0 +1,32 @@
+@import "../../SharedStyling/SharedStyling";
+
+.header {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  height: 80px;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 20px 0 20px;
+
+  .header-title {
+    font-weight: 800;
+    line-height: 20px;
+    font-size: 0.875rem;
+  }
+
+  .theme-toggle-text {
+    font-weight: 600;
+    font-size: 0.75rem;
+  }
+}
+
+.light-element {
+  background-color: $white;
+  transition: all 0.2s;
+}
+
+.dark-element {
+  background-color: $dark-blue;
+  transition: all 0.2s;
+}
