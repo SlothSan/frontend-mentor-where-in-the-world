@@ -19,6 +19,14 @@
     font-weight: 600;
     font-size: 0.75rem;
   }
+
+  .header-sub-container {
+    display: flex;
+
+    svg {
+      margin-right: 10px;
+    }
+  }
 }
 
 .light-element {
