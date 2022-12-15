@@ -13,7 +13,7 @@ interface AllCountriesViewProps {
 
 const AllCountriesView = (props: AllCountriesViewProps): JSX.Element => {
     const [allCountriesData, setAllCountriesData] = useState([]);
-    const [searchRegion, setSearchRegion] = useState('');
+    const [searchString, setSearchString] = useState('');
 
     const getAllCountryData = async (): Promise<any> => {
         const countriesData = await fetch('https://restcountries.com/v3/all')
@@ -22,21 +22,37 @@ const AllCountriesView = (props: AllCountriesViewProps): JSX.Element => {
         setAllCountriesData(Object.entries(countriesDataJson));
     }
 
+    const getSearchedCountryData = async (): Promise<any> => {
+        let url = `https://restcountries.com/v3/name/${searchString}`
+        if (searchString === ``) {
+            url = `https://restcountries.com/v3/all`
+        }
+        const countryData = await fetch(url)
+        const countryDataJson = await countryData.json();
+        if (countryDataJson.status === 404) {
+            return;
+        }
+        setAllCountriesData(Object.entries(countryDataJson));
+    }
+
+    const handleSearchClick = (event) => {
+        event.preventDefault();
+        getSearchedCountryData()
+    }
 
     useEffect(() => {
         getAllCountryData();
     }, [])
 
-    useEffect(() => {
-        console.log(allCountriesData)
-    }, [allCountriesData])
-
 
     return (
         <section className={"all-countries-view"}>
-            <form className={`search ${props.theme}-element`}>
-                <FontAwesomeIcon icon={['fas', 'magnifying-glass']}/>
-                <input className={`${props.theme}-element`} type={"text"} placeholder={"Search for a country..."}/>
+            <form onSubmit={(event) => event.preventDefault()} className={`search ${props.theme}-element`}>
+                <FontAwesomeIcon onClick={handleSearchClick} icon={['fas', 'magnifying-glass']}/>
+                <input onChange={(event) => setSearchString(event.target.value)}
+                       className={`${props.theme}-element`}
+                       type={"text"}
+                       placeholder={"Search for a country..."}/>
             </form>
             {allCountriesData.map((country) => {
                 return (
