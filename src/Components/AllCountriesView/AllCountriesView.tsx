@@ -47,7 +47,7 @@ const AllCountriesView = (props: AllCountriesViewProps): JSX.Element => {
 
     return (
         <section className={"all-countries-view"}>
-            <form onSubmit={(event) => event.preventDefault()} className={`search ${props.theme}-element`}>
+            <form onSubmit={handleSearchClick} className={`search ${props.theme}-element`}>
                 <FontAwesomeIcon onClick={handleSearchClick} icon={['fas', 'magnifying-glass']}/>
                 <input onChange={(event) => setSearchString(event.target.value)}
                        className={`${props.theme}-element`}
