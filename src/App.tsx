@@ -1,10 +1,13 @@
 import './App.css'
+import Header from "./Components/Header/Header";
+import {useState} from "react";
 
-function App() {
+const App = (): JSX.Element => {
+    const [darkMode, setDarkMode] = useState(false);
 
     return (
         <div className="App">
-            <h1>Hello World!</h1>
+            <Header darkMode={darkMode} setDarkMode={setDarkMode}/>
         </div>
     )
 }
