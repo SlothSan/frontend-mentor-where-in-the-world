@@ -31,7 +31,7 @@ const AllCountriesView = (props: AllCountriesViewProps): JSX.Element => {
         <section className={"all-countries-view"}>
             {allCountriesData.map((country) => {
                 return (
-                    <CountryCard flag={country[1].flags[0]}
+                    <CountryCard flag={country[1].flags[1]}
                                  name={country[1].name.common}
                                  population={country[1].population}
                                  region={country[1].region}
