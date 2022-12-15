@@ -11,19 +11,28 @@ const CountryDetails = (): JSX.Element => {
     const [countryCapital, setCountryCapital] = useState("");
     const [countryTLD, setCountryTLD] = useState("");
     const [countryLanguages, setCountryLanguages] = useState([]);
+    const [borderQueryString, setBorderQueryString] = useState("");
+    const [borderCountries, setBorderCountries] = useState([]);
 
     const getCountryData = async () => {
         const countryData = await fetch(`https://restcountries.com/v3/name/${name}`)
         const countryDataJson = await countryData.json();
         setCountryData(countryDataJson[0]);
+        setBorderQueryString(countryDataJson[0].borders.join(','));
     }
 
+    const getBorderCountries = async () => {
+        const borderData = await fetch(`https://restcountries.com/v3/alpha?codes=${borderQueryString}`);
+        const borderDataJson = await borderData.json();
+        setBorderCountries(borderDataJson);
+    }
+    
     useEffect(() => {
         getCountryData();
-    }, [])
+    }, [name])
 
     useEffect(() => {
-        if (Object.keys(countryData).length !== 0) {
+        if (Object.keys(countryData).length > 0) {
             console.log(countryData)
             setCountryName(countryData.name.common)
             setCountryNativeName(Object.values(countryData.name.nativeName)[0].common);
@@ -32,11 +41,8 @@ const CountryDetails = (): JSX.Element => {
             setCountryCapital(countryData.capital);
             setCountryTLD(countryData.tld[0]);
             setCountryLanguages(Object.values(countryData.languages))
+            getBorderCountries();
         }
-
-        // setCountryName(countryData.name.official)
-
-
     }, [countryData])
 
 
@@ -52,6 +58,10 @@ const CountryDetails = (): JSX.Element => {
             <p>Languages: <span>{countryLanguages.map((language) => {
                 return `${language} `
             })}</span></p>
+            {borderCountries.length > 0 ? borderCountries.map((country) => {
+                return <Link to={`/country/${country.name.common}`}>
+                    {country.name.common}</Link>
+            }) : ''}
         </section>
     )
 }
