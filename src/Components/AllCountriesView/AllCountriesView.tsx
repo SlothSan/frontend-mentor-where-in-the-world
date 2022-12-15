@@ -1,6 +1,11 @@
 import CountryCard from "../CountryCard/CountryCard";
 import {useEffect, useState} from "react";
+import {faS, faMagnifyingGlass} from '@fortawesome/free-solid-svg-icons';
+import {library} from "@fortawesome/fontawesome-svg-core";
+
+library.add(faS, faMagnifyingGlass)
 import './AllCountriesView.css'
+import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 
 interface AllCountriesViewProps {
     theme: string
@@ -29,6 +34,10 @@ const AllCountriesView = (props: AllCountriesViewProps): JSX.Element => {
 
     return (
         <section className={"all-countries-view"}>
+            <form className={`search ${props.theme}-element`}>
+                <FontAwesomeIcon icon={['fas', 'magnifying-glass']}/>
+                <input className={`${props.theme}-element`} type={"text"} placeholder={"Search for a country..."}/>
+            </form>
             {allCountriesData.map((country) => {
                 return (
                     <CountryCard flag={country[1].flags[1]}

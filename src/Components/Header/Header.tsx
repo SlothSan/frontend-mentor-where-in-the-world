@@ -21,7 +21,7 @@ const Header = (props: HeaderProps): JSX.Element => {
     }
 
     return (
-        <header className={`header ${props.theme + "-element"}`}>
+        <header className={`header ${props.theme}-element`}>
             <h1 className={"header-title"}>Where in the world?</h1>
             <div className={"header-sub-container"} onClick={() => handleThemeToggle()}>
                 <FontAwesomeIcon icon={['fas', 'moon']}/>
