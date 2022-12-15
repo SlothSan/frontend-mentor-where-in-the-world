@@ -34,7 +34,7 @@ const App = (): JSX.Element => {
         <main className={`App ${theme}`}>
             <Header theme={theme} setTheme={setTheme}/>
             <Routes>
-                <Route path={"/"} element={<AllCountriesView allCountryData={allCountryData}/>}/>
+                <Route path={"/"} element={<AllCountriesView/>}/>
                 <Route path={"/country/:name"} element={<CountryDetails/>}/>
             </Routes>
         </main>
