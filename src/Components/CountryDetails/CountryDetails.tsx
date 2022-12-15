@@ -54,7 +54,7 @@ const CountryDetails = (): JSX.Element => {
             <Link to={"/"}>Back</Link>
             <p>{countryName}</p>
             <p>Native Name: <span>{countryNativeName}</span></p>
-            <p>Population: <span>{countryPopulation}</span></p>
+            <p>Population: <span>{countryPopulation.toLocaleString("en-US")}</span></p>
             <p>Region: <span>{countryRegion}</span></p>
             <p>Capital: <span>{countryCapital}</span></p>
             <p>Top Level Domain: <span>{countryTLD}</span></p>
