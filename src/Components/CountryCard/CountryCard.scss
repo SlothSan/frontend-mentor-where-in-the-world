@@ -1,0 +1,24 @@
+.country-card {
+  width: 264px;
+  height: 336px;
+  display: flex;
+  justify-content: flex-start;
+  text-decoration: none;
+
+  .country-card-flag {
+    min-width: 264px;
+    max-width: 264px;
+    height: 160px;
+  }
+
+  .country-card-sub-container {
+    padding: 25px;
+
+    .country-card-name {
+      font-weight: 800;
+      line-height: 26px;
+      font-size: 1.125rem;
+    }
+  }
+
+}

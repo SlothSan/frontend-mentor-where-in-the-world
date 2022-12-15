@@ -1,8 +1,12 @@
 import CountryCard from "../CountryCard/CountryCard";
 import {useEffect, useState} from "react";
+import './AllCountriesView.css'
 
+interface AllCountriesViewProps {
+    theme: string
+}
 
-const AllCountriesView = (): JSX.Element => {
+const AllCountriesView = (props: AllCountriesViewProps): JSX.Element => {
     const [allCountriesData, setAllCountriesData] = useState([]);
     const [searchRegion, setSearchRegion] = useState('');
 
@@ -24,14 +28,15 @@ const AllCountriesView = (): JSX.Element => {
 
 
     return (
-        <section>
+        <section className={"all-countries-view"}>
             {allCountriesData.map((country) => {
                 return (
                     <CountryCard flag={country[1].flags[0]}
                                  name={country[1].name.common}
                                  population={country[1].population}
                                  region={country[1].region}
-                                 capital={country[1].capital}/>
+                                 capital={country[1].capital}
+                                 theme={props.theme}/>
                 )
             })}
         </section>

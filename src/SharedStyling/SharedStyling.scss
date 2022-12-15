@@ -8,22 +8,24 @@ $white: hsl(0, 0%, 100%);
 
 .light {
   background-color: $very-light-gray-lm-bg;
-  color: $very-dark-blue-lm-text;
+  color: $very-dark-blue-lm-text !important;
   transition: all 0.2s;
 }
 
 .dark {
   background-color: $very-dark-blue-dm-bg;
-  color: $white;
+  color: $white !important;
   transition: all 0.2s;
 }
 
 .light-element {
   background-color: $white;
+  color: $very-dark-blue-lm-text;
   transition: all 0.2s;
 }
 
 .dark-element {
   background-color: $dark-blue;
+  color: $white;
   transition: all 0.2s;
 }
