@@ -1,6 +1,11 @@
 import {Link, useParams} from "react-router-dom";
 import {useEffect, useState} from "react";
+import {faS, faArrowLeft} from '@fortawesome/free-solid-svg-icons';
+import {library} from '@fortawesome/fontawesome-svg-core';
 import './CountryDetails.css';
+import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
+
+library.add(faS, faArrowLeft)
 
 
 interface CountryDetailsProps {
@@ -80,7 +85,8 @@ const CountryDetails = (props: CountryDetailsProps): JSX.Element => {
 
     return (
         <section className={"country-details-container"}>
-            <Link className={`back-button ${props.theme}-element`} to={"/"}>Back</Link>
+            <Link className={`back-button ${props.theme}-element`} to={"/"}><FontAwesomeIcon
+                icon={['fas', 'arrow-left']}/>Back</Link>
             <div className={"flag-container"}>
                 <img className={"country-flag"} src={countryFlag} alt={`${countryName}'s flag`}/>
             </div>
