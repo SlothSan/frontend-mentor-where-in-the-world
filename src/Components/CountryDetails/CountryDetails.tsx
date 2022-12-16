@@ -65,22 +65,14 @@ const CountryDetails = (props: CountryDetailsProps): JSX.Element => {
                     .join(",")
                 setCountryCurrencies(currencyString);
                 setCountryLanguages(Object.values(countryData.languages));
-            } catch {
+            } catch (error) {
+                console.error(error)
             }
-
-
             setCountryTLD(countryData.tld[0]);
-
             setCountryFlag(countryData.flags[1])
             getBorderCountries();
         }
     }, [countryData])
-
-    useEffect(() => {
-        // if (countryCurrencies.length !== 0) {
-        //     console.log(countryCurrencies[0].name);
-        // }
-    }, [countryCurrencies])
 
 
     return (
@@ -110,7 +102,7 @@ const CountryDetails = (props: CountryDetailsProps): JSX.Element => {
                 <p className={"border-countries-title"}>Border Countries:</p>
                 <div className={"border-countries-container"}>
                     {borderCountries.length > 0 ? borderCountries.map((country) => {
-                        return <Link className={`${props.theme}-element border-link`}
+                        return <Link className={`${props.theme}-element border-link`} key={country.name.common}
                                      to={`/country/${country.name.common}`}>
                             {country.name.common}</Link>
                     }) : <p>No bordering countries!</p>}

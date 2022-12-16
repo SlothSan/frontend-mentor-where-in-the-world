@@ -1,11 +1,12 @@
 import CountryCard from "../CountryCard/CountryCard";
 import {useEffect, useState} from "react";
-import {faS, faMagnifyingGlass} from '@fortawesome/free-solid-svg-icons';
+import {faS, faMagnifyingGlass, faChevronDown} from '@fortawesome/free-solid-svg-icons';
 import {library} from "@fortawesome/fontawesome-svg-core";
-
-library.add(faS, faMagnifyingGlass)
 import './AllCountriesView.css'
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
+
+library.add(faS, faMagnifyingGlass, faChevronDown)
+
 
 interface AllCountriesViewProps {
     theme: string
@@ -14,6 +15,7 @@ interface AllCountriesViewProps {
 const AllCountriesView = (props: AllCountriesViewProps): JSX.Element => {
     const [allCountriesData, setAllCountriesData] = useState([]);
     const [searchString, setSearchString] = useState('');
+    const [dropdownOpen, setDropdownOpen] = useState(false);
 
     const getAllCountryData = async (): Promise<any> => {
         const countriesData = await fetch('https://restcountries.com/v3/all')
@@ -40,6 +42,10 @@ const AllCountriesView = (props: AllCountriesViewProps): JSX.Element => {
         getSearchedCountryData()
     }
 
+    const handleDropdownClick = () => {
+        setDropdownOpen(!dropdownOpen);
+    }
+
     useEffect(() => {
         getAllCountryData();
     }, [])
@@ -54,6 +60,17 @@ const AllCountriesView = (props: AllCountriesViewProps): JSX.Element => {
                        type={"text"}
                        placeholder={"Search for a country..."}/>
             </form>
+            <div className={`dropdown-container`}>
+                <div onClick={handleDropdownClick} className={`dropdown ${props.theme}-element`}>Filter by
+                    Region <FontAwesomeIcon icon={['fas', 'chevron-down']}/></div>
+                <div className={dropdownOpen ? `dropdown-menu ${props.theme}-element` : "hidden"}>
+                    <div><p>Africa</p></div>
+                    <div><p>America</p></div>
+                    <div><p>Asia</p></div>
+                    <div><p>Europe</p></div>
+                    <div><p>Oceania</p></div>
+                </div>
+            </div>
             {allCountriesData.map((country) => {
                 return (
                     <CountryCard
