@@ -85,25 +85,29 @@ const CountryDetails = (props: CountryDetailsProps): JSX.Element => {
                 <img className={"country-flag"} src={countryFlag} alt={`${countryName}'s flag`}/>
             </div>
             <div className={"info-container"}>
-                <div>
+                <div className={"info-sub-container"}>
                     <p className={"country-name"}>{countryName}</p>
-                    <p>Native Name: <span>{countryNativeName}</span></p>
-                    <p>Population: <span>{countryPopulation.toLocaleString("en-US")}</span></p>
-                    <p>Region: <span>{countryRegion}</span></p>
-                    <p>Sub Region: <span>{countrySubRegion}</span></p>
-                    <p>Capital: <span>{countryCapital}</span></p>
+                    <p className={"info-text"}>Native Name: <span>{countryNativeName}</span></p>
+                    <p className={"info-text"}>Population: <span>{countryPopulation.toLocaleString("en-US")}</span></p>
+                    <p className={"info-text"}>Region: <span>{countryRegion}</span></p>
+                    <p className={"info-text"}>Sub Region: <span>{countrySubRegion}</span></p>
+                    <p className={"info-text"}>Capital: <span>{countryCapital}</span></p>
                 </div>
-                <div>
-                    <p>Top Level Domain: <span>{countryTLD}</span></p>
-                    <p>Currencies: <span>{countryCurrencies}</span></p>
-                    <p>Languages: <span>{countryLanguages.join(', ')}</span></p>
+                <div className={"info-sub-container"}>
+                    <p className={"info-text"}>Top Level Domain: <span>{countryTLD}</span></p>
+                    <p className={"info-text"}>Currencies: <span>{countryCurrencies}</span></p>
+                    <p className={"info-text"}>Languages: <span>{countryLanguages.join(', ')}</span></p>
                 </div>
             </div>
-            <div>
-                {borderCountries.length > 0 ? borderCountries.map((country) => {
-                    return <Link to={`/country/${country.name.common}`}>
-                        {country.name.common}</Link>
-                }) : ''}
+
+            <div className={"border-container"}>
+                <p className={"border-countries-title"}>Border Countries:</p>
+                <div className={"border-countries-container"}>
+                    {borderCountries.length > 0 ? borderCountries.map((country) => {
+                        return <Link to={`/country/${country.name.common}`}>
+                            {country.name.common}</Link>
+                    }) : <p>No bordering countries!</p>}
+                </div>
             </div>
         </section>
     )
