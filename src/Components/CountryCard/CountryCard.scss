@@ -1,0 +1,41 @@
+.country-card {
+  width: 264px;
+  height: 336px;
+  display: flex;
+  justify-content: flex-start;
+  text-decoration: none;
+  margin-top: 25px;
+  border-radius: 5px;
+
+  .country-card-flag {
+    min-width: 264px;
+    max-width: 264px;
+    min-height: 160px;
+    max-height: 160px;
+    border-top-right-radius: 5px;
+    border-top-left-radius: 5px;
+  }
+
+  .country-card-sub-container {
+    padding: 25px;
+
+    .country-card-name {
+      font-weight: 800;
+      line-height: 26px;
+      font-size: 1.125rem;
+      margin-bottom: 15px;
+    }
+
+    .country-card-text {
+      line-height: 16px;
+      font-size: 0.875rem;
+      font-weight: 600;
+      margin-bottom: 10px;
+
+      span {
+        font-weight: 300;
+      }
+    }
+  }
+
+}
