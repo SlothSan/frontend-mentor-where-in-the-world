@@ -16,6 +16,7 @@ const AllCountriesView = (props: AllCountriesViewProps): JSX.Element => {
     const [allCountriesData, setAllCountriesData] = useState([]);
     const [searchString, setSearchString] = useState('');
     const [dropdownOpen, setDropdownOpen] = useState(false);
+    const [regionSearchString, setRegionSearchString] = useState('');
 
     const getAllCountryData = async (): Promise<any> => {
         const countriesData = await fetch('https://restcountries.com/v3/all')
@@ -37,12 +38,25 @@ const AllCountriesView = (props: AllCountriesViewProps): JSX.Element => {
         setAllCountriesData(Object.entries(countryDataJson));
     }
 
-    const handleSearchClick = (event) => {
+    const getCountrysByRegion = async (): Promise<any> => {
+        let url = `https://restcountries.com/v3/region/${regionSearchString}`
+        console.log(url)
+        const regionData = await fetch(url);
+        const regionDataJson = await regionData.json();
+        setAllCountriesData(Object.entries(regionDataJson));
+    }
+
+    const handleSearchClick = (event): void => {
         event.preventDefault();
         getSearchedCountryData()
     }
 
-    const handleDropdownClick = () => {
+    const handleDropdownClick = (): void => {
+        setDropdownOpen(!dropdownOpen);
+    }
+
+    const handleRegionClick = (event): void => {
+        setRegionSearchString(event.target.innerText)
         setDropdownOpen(!dropdownOpen);
     }
 
@@ -50,11 +64,17 @@ const AllCountriesView = (props: AllCountriesViewProps): JSX.Element => {
         getAllCountryData();
     }, [])
 
+    useEffect(() => {
+        if (regionSearchString !== '') {
+            getCountrysByRegion();
+        }
+    }, [regionSearchString])
+
 
     return (
         <section className={"all-countries-view"}>
             <form onSubmit={handleSearchClick} className={`search ${props.theme}-element`}>
-                <FontAwesomeIcon onClick={handleSearchClick} icon={['fas', 'magnifying-glass']}/>
+                <FontAwesomeIcon onClick={handleSearchClick} icon={faMagnifyingGlass}/>
                 <input onChange={(event) => setSearchString(event.target.value)}
                        className={`${props.theme}-element`}
                        type={"text"}
@@ -62,13 +82,13 @@ const AllCountriesView = (props: AllCountriesViewProps): JSX.Element => {
             </form>
             <div className={`dropdown-container`}>
                 <div onClick={handleDropdownClick} className={`dropdown ${props.theme}-element`}>Filter by
-                    Region <FontAwesomeIcon icon={['fas', 'chevron-down']}/></div>
+                    Region <FontAwesomeIcon icon={faChevronDown}/></div>
                 <div className={dropdownOpen ? `dropdown-menu ${props.theme}-element` : "hidden"}>
-                    <div><p>Africa</p></div>
-                    <div><p>America</p></div>
-                    <div><p>Asia</p></div>
-                    <div><p>Europe</p></div>
-                    <div><p>Oceania</p></div>
+                    <div onClick={handleRegionClick}><p>Africa</p></div>
+                    <div onClick={handleRegionClick}><p>America</p></div>
+                    <div onClick={handleRegionClick}><p>Asia</p></div>
+                    <div onClick={handleRegionClick}><p>Europe</p></div>
+                    <div onClick={handleRegionClick}><p>Oceania</p></div>
                 </div>
             </div>
             {allCountriesData.map((country) => {

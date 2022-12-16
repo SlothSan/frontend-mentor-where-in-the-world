@@ -21,7 +21,7 @@ const CountryDetails = (props: CountryDetailsProps): JSX.Element => {
     const [countryRegion, setCountryRegion] = useState("");
     const [countrySubRegion, setCountrySubRegion] = useState("N/A");
     const [countryCapital, setCountryCapital] = useState("N/A");
-    const [countryTLD, setCountryTLD] = useState("");
+    const [countryTLD, setCountryTLD] = useState("N/A");
     const [countryCurrencies, setCountryCurrencies] = useState("N/A");
     const [countryLanguages, setCountryLanguages] = useState(["N/A"]);
     const [countryFlag, setCountryFlag] = useState("");
@@ -55,6 +55,7 @@ const CountryDetails = (props: CountryDetailsProps): JSX.Element => {
             setCountryPopulation(countryData.population);
             setCountryRegion(countryData.region);
             try {
+                setCountryFlag(countryData.flags[1])
                 setCountryNativeName(Object.values(countryData.name.nativeName)[0].common);
                 setCountryCapital(countryData.capital);
                 setCountrySubRegion(countryData.subregion)
@@ -65,11 +66,10 @@ const CountryDetails = (props: CountryDetailsProps): JSX.Element => {
                     .join(",")
                 setCountryCurrencies(currencyString);
                 setCountryLanguages(Object.values(countryData.languages));
+                setCountryTLD(countryData.tld[0]);
             } catch (error) {
                 console.error(error)
             }
-            setCountryTLD(countryData.tld[0]);
-            setCountryFlag(countryData.flags[1])
             getBorderCountries();
         }
     }, [countryData])
