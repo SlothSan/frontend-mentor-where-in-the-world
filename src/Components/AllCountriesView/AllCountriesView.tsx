@@ -92,19 +92,21 @@ const AllCountriesView = (props: AllCountriesViewProps): JSX.Element => {
                     </div>
                 </div>
             </div>
+            <div className={"desktop-card-container"}>
+                {allCountriesData.map((country: any) => {
+                    return (
+                        <CountryCard
+                            key={country[1].name.common}
+                            flag={country[1].flags[1]}
+                            name={country[1].name.common}
+                            population={country[1].population}
+                            region={country[1].region}
+                            capital={country[1].capital}
+                            theme={props.theme}/>
+                    )
+                })}
+            </div>
 
-            {allCountriesData.map((country: any) => {
-                return (
-                    <CountryCard
-                        key={country[1].name.common}
-                        flag={country[1].flags[1]}
-                        name={country[1].name.common}
-                        population={country[1].population}
-                        region={country[1].region}
-                        capital={country[1].capital}
-                        theme={props.theme}/>
-                )
-            })}
         </section>
     )
 }

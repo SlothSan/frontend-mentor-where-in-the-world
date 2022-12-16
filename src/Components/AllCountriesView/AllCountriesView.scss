@@ -76,10 +76,12 @@
 }
 
 @media (min-width: 1300px) {
+  .all-countries-view {
+    padding: 0 78px 0 78px;
+  }
   .desktop-search-filter-container {
     display: flex;
     width: 100%;
-    padding: 0 78px 0 78px;
     justify-content: space-between;
 
     .search,
@@ -94,14 +96,19 @@
 
       .dropdown {
         justify-self: right;
-        padding: 30px 10px;
+        padding: 29px 10px;
       }
 
       .dropdown-menu {
         top: 65px;
       }
     }
-
-
+  }
+  .desktop-card-container {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    column-gap: 74.33px;
+    row-gap: 35px;
   }
 }
