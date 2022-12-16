@@ -104,7 +104,8 @@ const CountryDetails = (props: CountryDetailsProps): JSX.Element => {
                 <p className={"border-countries-title"}>Border Countries:</p>
                 <div className={"border-countries-container"}>
                     {borderCountries.length > 0 ? borderCountries.map((country) => {
-                        return <Link to={`/country/${country.name.common}`}>
+                        return <Link className={`${props.theme}-element border-link`}
+                                     to={`/country/${country.name.common}`}>
                             {country.name.common}</Link>
                     }) : <p>No bordering countries!</p>}
                 </div>

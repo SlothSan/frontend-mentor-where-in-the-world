@@ -74,8 +74,23 @@
     }
 
     .border-countries-container {
+      margin-top: 15px;
       display: flex;
       flex-direction: row;
+      width: 100%;
+      flex-wrap: wrap;
+      gap: 10px;
+
+      .border-link {
+        display: flex;
+        font-size: 0.875rem;
+        width: 96px;
+        height: 28px;
+        align-items: center;
+        justify-content: center;
+        text-decoration: none;
+        font-weight: 300;
+      }
     }
   }
 
