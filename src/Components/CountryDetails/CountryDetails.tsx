@@ -14,7 +14,7 @@ interface CountryDetailsProps {
 
 const CountryDetails = (props: CountryDetailsProps): JSX.Element => {
     const {name} = useParams();
-    const [countryData, setCountryData] = useState({});
+    const [countryData, setCountryData] = useState<any>({});
     const [countryName, setCountryName] = useState("");
     const [countryNativeName, setCountryNativeName] = useState("N/A");
     const [countryPopulation, setCountryPopulation] = useState(0);
@@ -56,11 +56,12 @@ const CountryDetails = (props: CountryDetailsProps): JSX.Element => {
             setCountryRegion(countryData.region);
             try {
                 setCountryFlag(countryData.flags[1])
+                // @ts-ignore
                 setCountryNativeName(Object.values(countryData.name.nativeName)[0].common);
                 setCountryCapital(countryData.capital);
                 setCountrySubRegion(countryData.subregion)
                 let currencyString = Object.values(countryData.currencies)
-                    .map((currency) => {
+                    .map((currency: any) => {
                         return currency.name
                     })
                     .join(",")
@@ -101,7 +102,7 @@ const CountryDetails = (props: CountryDetailsProps): JSX.Element => {
             <div className={"border-container"}>
                 <p className={"border-countries-title"}>Border Countries:</p>
                 <div className={"border-countries-container"}>
-                    {borderCountries.length > 0 ? borderCountries.map((country) => {
+                    {borderCountries.length > 0 ? borderCountries.map((country: any) => {
                         return <Link className={`${props.theme}-element border-link`} key={country.name.common}
                                      to={`/country/${country.name.common}`}>
                             {country.name.common}</Link>

@@ -13,7 +13,7 @@ interface AllCountriesViewProps {
 }
 
 const AllCountriesView = (props: AllCountriesViewProps): JSX.Element => {
-    const [allCountriesData, setAllCountriesData] = useState([]);
+    const [allCountriesData, setAllCountriesData] = useState<any>([]);
     const [searchString, setSearchString] = useState('');
     const [dropdownOpen, setDropdownOpen] = useState(false);
     const [regionSearchString, setRegionSearchString] = useState('');
@@ -21,7 +21,6 @@ const AllCountriesView = (props: AllCountriesViewProps): JSX.Element => {
     const getAllCountryData = async (): Promise<any> => {
         const countriesData = await fetch('https://restcountries.com/v3/all')
         const countriesDataJson = await countriesData.json();
-        //TODO Refactor this it doesn't feel right
         setAllCountriesData(Object.entries(countriesDataJson));
     }
 
@@ -46,7 +45,7 @@ const AllCountriesView = (props: AllCountriesViewProps): JSX.Element => {
         setAllCountriesData(Object.entries(regionDataJson));
     }
 
-    const handleSearchClick = (event): void => {
+    const handleSearchClick = (event: any): void => {
         event.preventDefault();
         getSearchedCountryData()
     }
@@ -55,7 +54,7 @@ const AllCountriesView = (props: AllCountriesViewProps): JSX.Element => {
         setDropdownOpen(!dropdownOpen);
     }
 
-    const handleRegionClick = (event): void => {
+    const handleRegionClick = (event: any): void => {
         setRegionSearchString(event.target.innerText)
         setDropdownOpen(!dropdownOpen);
     }
@@ -91,7 +90,7 @@ const AllCountriesView = (props: AllCountriesViewProps): JSX.Element => {
                     <div onClick={handleRegionClick}><p>Oceania</p></div>
                 </div>
             </div>
-            {allCountriesData.map((country) => {
+            {allCountriesData.map((country: any) => {
                 return (
                     <CountryCard
                         key={country[1].name.common}
