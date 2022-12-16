@@ -56,12 +56,14 @@ const AllCountriesView = (props: AllCountriesViewProps): JSX.Element => {
             </form>
             {allCountriesData.map((country) => {
                 return (
-                    <CountryCard flag={country[1].flags[1]}
-                                 name={country[1].name.common}
-                                 population={country[1].population}
-                                 region={country[1].region}
-                                 capital={country[1].capital}
-                                 theme={props.theme}/>
+                    <CountryCard
+                        key={country[1].name.common}
+                        flag={country[1].flags[1]}
+                        name={country[1].name.common}
+                        population={country[1].population}
+                        region={country[1].region}
+                        capital={country[1].capital}
+                        theme={props.theme}/>
                 )
             })}
         </section>
