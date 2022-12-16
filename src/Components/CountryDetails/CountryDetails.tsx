@@ -11,14 +11,14 @@ const CountryDetails = (props: CountryDetailsProps): JSX.Element => {
     const {name} = useParams();
     const [countryData, setCountryData] = useState({});
     const [countryName, setCountryName] = useState("");
-    const [countryNativeName, setCountryNativeName] = useState("");
+    const [countryNativeName, setCountryNativeName] = useState("N/A");
     const [countryPopulation, setCountryPopulation] = useState(0);
     const [countryRegion, setCountryRegion] = useState("");
-    const [countrySubRegion, setCountrySubRegion] = useState("");
-    const [countryCapital, setCountryCapital] = useState("");
+    const [countrySubRegion, setCountrySubRegion] = useState("N/A");
+    const [countryCapital, setCountryCapital] = useState("N/A");
     const [countryTLD, setCountryTLD] = useState("");
-    const [countryCurrencies, setCountryCurrencies] = useState("");
-    const [countryLanguages, setCountryLanguages] = useState([]);
+    const [countryCurrencies, setCountryCurrencies] = useState("N/A");
+    const [countryLanguages, setCountryLanguages] = useState(["N/A"]);
     const [countryFlag, setCountryFlag] = useState("");
     const [borderQueryString, setBorderQueryString] = useState("");
     const [borderCountries, setBorderCountries] = useState([]);
@@ -47,25 +47,25 @@ const CountryDetails = (props: CountryDetailsProps): JSX.Element => {
     useEffect(() => {
         if (Object.keys(countryData).length > 0) {
             setCountryName(countryData.name.common)
-            if (Object.keys(countryData.name).indexOf("nativeName") > -1) {
-                setCountryNativeName(Object.values(countryData.name.nativeName)[0].common);
-            } else {
-                setCountryNativeName("N/A")
-            }
             setCountryPopulation(countryData.population);
             setCountryRegion(countryData.region);
-            // setCountrySubRegion(countryData.subregion)
-            // setCountryCapital(countryData.capital);
-            setCountryTLD(countryData.tld[0]);
-            if (Object.keys(countryData).indexOf('currencies') > -1) {
-                // let currencyString = Object.values(countryData.currencies)
-                //     .map((currency) => {
-                //         return currency.name
-                //     })
-                //     .join(",")
-                // setCountryCurrencies(currencyString)
+            try {
+                setCountryNativeName(Object.values(countryData.name.nativeName)[0].common);
+                setCountryCapital(countryData.capital);
+                setCountrySubRegion(countryData.subregion)
+                let currencyString = Object.values(countryData.currencies)
+                    .map((currency) => {
+                        return currency.name
+                    })
+                    .join(",")
+                setCountryCurrencies(currencyString);
+                setCountryLanguages(Object.values(countryData.languages));
+            } catch {
             }
-            // setCountryLanguages(Object.values(countryData.languages))
+
+
+            setCountryTLD(countryData.tld[0]);
+
             setCountryFlag(countryData.flags[1])
             getBorderCountries();
         }
