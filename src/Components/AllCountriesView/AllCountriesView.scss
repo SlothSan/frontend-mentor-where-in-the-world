@@ -20,8 +20,14 @@
   }
 
   input {
+    height: 48px;
     margin-left: 30px;
     border: none;
+    font-size: 0.875rem;
+  }
+
+  input:focus {
+    outline: none;
   }
 }
 
@@ -66,5 +72,36 @@
   .hidden {
     display: none;
     transition: all 0.2s;
+  }
+}
+
+@media (min-width: 1300px) {
+  .desktop-search-filter-container {
+    display: flex;
+    width: 100%;
+    padding: 0 78px 0 78px;
+    justify-content: space-between;
+
+    .search,
+    input {
+      width: 480px;
+      height: 56px;
+    }
+
+    .dropdown-container {
+      height: 56px;
+      width: fit-content;
+
+      .dropdown {
+        justify-self: right;
+        padding: 30px 10px;
+      }
+
+      .dropdown-menu {
+        top: 65px;
+      }
+    }
+
+
   }
 }

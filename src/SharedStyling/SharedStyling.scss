@@ -22,10 +22,18 @@ $white: hsl(0, 0%, 100%);
   background-color: $white;
   color: $very-dark-blue-lm-text;
   transition: all 0.2s;
+
+  ::placeholder {
+    color: $very-dark-blue-lm-text;
+  }
 }
 
 .dark-element {
   background-color: $dark-blue;
   color: $white;
   transition: all 0.2s;
+
+  ::placeholder {
+    color: $white
+  }
 }
