@@ -55,7 +55,7 @@ const CountryDetails = (props: CountryDetailsProps): JSX.Element => {
             setCountryPopulation(countryData.population);
             setCountryRegion(countryData.region);
             try {
-                setCountryFlag(countryData.flags[1])
+                setCountryFlag(countryData.flags[0])
                 // @ts-ignore
                 setCountryNativeName(Object.values(countryData.name.nativeName)[0].common);
                 setCountryCapital(countryData.capital);
