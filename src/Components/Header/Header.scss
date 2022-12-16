@@ -29,3 +29,25 @@
   }
 }
 
+@media (min-width: 1300px) {
+  .header {
+    padding: 0 78px 0 78px;
+  }
+  .header-title {
+    font-size: 1.5rem !important;
+  }
+
+  .theme-toggle-text {
+    font-size: 1rem !important;
+  }
+
+  .header-sub-container {
+    align-items: center;
+
+    svg {
+      height: 20px;
+      width: 20px;
+    }
+  }
+}
+
