@@ -19,7 +19,7 @@ const App = (): JSX.Element => {
             <Header theme={theme} setTheme={setTheme}/>
             <Routes>
                 <Route path={"/"} element={<AllCountriesView theme={theme}/>}/>
-                <Route path={"/country/:name"} element={<CountryDetails/>}/>
+                <Route path={"/country/:name"} element={<CountryDetails theme={theme}/>}/>
             </Routes>
         </main>
     )
