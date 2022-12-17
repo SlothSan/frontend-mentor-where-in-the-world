@@ -105,10 +105,8 @@
     }
   }
   .desktop-card-container {
-    display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
-    column-gap: 74.33px;
-    row-gap: 35px;
+    width: 1300px;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
   }
 }
