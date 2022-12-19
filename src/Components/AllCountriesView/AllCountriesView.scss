@@ -85,6 +85,7 @@
     display: flex;
     width: 100%;
     justify-content: space-between;
+    margin: 20px 0;
 
     .search,
     input {
@@ -112,6 +113,6 @@
     flex-direction: row;
     flex-wrap: wrap;
     justify-content: space-between;
-    gap: 30px;
+    gap: 78px;
   }
 }

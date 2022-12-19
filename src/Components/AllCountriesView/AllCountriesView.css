@@ -76,6 +76,7 @@
     display: flex;
     width: 100%;
     justify-content: space-between;
+    margin: 20px 0;
   }
   .desktop-search-filter-container .search,
 .desktop-search-filter-container input {
@@ -99,7 +100,7 @@
     flex-direction: row;
     flex-wrap: wrap;
     justify-content: space-between;
-    gap: 30px;
+    gap: 78px;
   }
 }
 
