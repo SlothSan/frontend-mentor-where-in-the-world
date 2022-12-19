@@ -1,0 +1,31 @@
+.light {
+  background-color: hsl(0deg, 0%, 94%);
+  color: hsl(200deg, 15%, 8%) !important;
+  transition: all 0.2s;
+}
+
+.dark {
+  background-color: hsl(209deg, 26%, 17%);
+  color: hsl(0deg, 0%, 100%) !important;
+  transition: all 0.2s;
+}
+
+.light-element {
+  background-color: hsl(0deg, 0%, 100%);
+  color: hsl(200deg, 15%, 8%);
+  transition: all 0.2s;
+}
+.light-element ::placeholder {
+  color: hsl(200deg, 15%, 8%);
+}
+
+.dark-element {
+  background-color: hsl(209deg, 23%, 22%);
+  color: hsl(0deg, 0%, 100%);
+  transition: all 0.2s;
+}
+.dark-element ::placeholder {
+  color: hsl(0deg, 0%, 100%);
+}
+
+/*# sourceMappingURL=SharedStyling.css.map */
