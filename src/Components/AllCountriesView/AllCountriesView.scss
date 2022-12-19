@@ -79,6 +79,7 @@
 @media (min-width: 1300px) {
   .all-countries-view {
     padding: 0 78px 0 78px;
+    margin: 0 auto;
   }
   .desktop-search-filter-container {
     display: flex;
@@ -105,8 +106,12 @@
     }
   }
   .desktop-card-container {
-    width: 1300px;
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
+    margin-top: 30px;
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    gap: 30px;
   }
 }
