@@ -72,36 +72,41 @@ const AllCountriesView = (props: AllCountriesViewProps): JSX.Element => {
 
     return (
         <section className={"all-countries-view"}>
-            <form onSubmit={handleSearchClick} className={`search ${props.theme}-element`}>
-                <FontAwesomeIcon onClick={handleSearchClick} icon={faMagnifyingGlass}/>
-                <input onChange={(event) => setSearchString(event.target.value)}
-                       className={`${props.theme}-element`}
-                       type={"text"}
-                       placeholder={"Search for a country..."}/>
-            </form>
-            <div className={`dropdown-container`}>
-                <div onClick={handleDropdownClick} className={`dropdown ${props.theme}-element`}>Filter by
-                    Region <FontAwesomeIcon icon={faChevronDown}/></div>
-                <div className={dropdownOpen ? `dropdown-menu ${props.theme}-element` : "hidden"}>
-                    <div onClick={handleRegionClick}><p>Africa</p></div>
-                    <div onClick={handleRegionClick}><p>America</p></div>
-                    <div onClick={handleRegionClick}><p>Asia</p></div>
-                    <div onClick={handleRegionClick}><p>Europe</p></div>
-                    <div onClick={handleRegionClick}><p>Oceania</p></div>
+            <div className={"desktop-search-filter-container"}>
+                <form onSubmit={handleSearchClick} className={`search ${props.theme}-element`}>
+                    <FontAwesomeIcon onClick={handleSearchClick} icon={faMagnifyingGlass}/>
+                    <input onChange={(event) => setSearchString(event.target.value)}
+                           className={`${props.theme}-element`}
+                           type={"text"}
+                           placeholder={"Search for a country..."}/>
+                </form>
+                <div className={`dropdown-container`}>
+                    <div onClick={handleDropdownClick} className={`dropdown ${props.theme}-element`}>Filter by
+                        Region <FontAwesomeIcon icon={faChevronDown}/></div>
+                    <div className={dropdownOpen ? `dropdown-menu ${props.theme}-element` : "hidden"}>
+                        <div onClick={handleRegionClick}><p>Africa</p></div>
+                        <div onClick={handleRegionClick}><p>America</p></div>
+                        <div onClick={handleRegionClick}><p>Asia</p></div>
+                        <div onClick={handleRegionClick}><p>Europe</p></div>
+                        <div onClick={handleRegionClick}><p>Oceania</p></div>
+                    </div>
                 </div>
             </div>
-            {allCountriesData.map((country: any) => {
-                return (
-                    <CountryCard
-                        key={country[1].name.common}
-                        flag={country[1].flags[1]}
-                        name={country[1].name.common}
-                        population={country[1].population}
-                        region={country[1].region}
-                        capital={country[1].capital}
-                        theme={props.theme}/>
-                )
-            })}
+            <div className={"desktop-card-container"}>
+                {allCountriesData.map((country: any) => {
+                    return (
+                        <CountryCard
+                            key={country[1].name.common}
+                            flag={country[1].flags[1]}
+                            name={country[1].name.common}
+                            population={country[1].population}
+                            region={country[1].region}
+                            capital={country[1].capital}
+                            theme={props.theme}/>
+                    )
+                })}
+            </div>
+
         </section>
     )
 }

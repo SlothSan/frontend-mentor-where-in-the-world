@@ -80,33 +80,37 @@ const CountryDetails = (props: CountryDetailsProps): JSX.Element => {
         <section className={"country-details-container"}>
             <Link className={`back-button ${props.theme}-element`} to={"/"}><FontAwesomeIcon
                 icon={['fas', 'arrow-left']}/>Back</Link>
-            <div className={"flag-container"}>
-                <img className={"country-flag"} src={countryFlag} alt={`${countryName}'s flag`}/>
-            </div>
-            <div className={"info-container"}>
-                <div className={"info-sub-container"}>
-                    <p className={"country-name"}>{countryName}</p>
-                    <p className={"info-text"}>Native Name: <span>{countryNativeName}</span></p>
-                    <p className={"info-text"}>Population: <span>{countryPopulation.toLocaleString("en-US")}</span></p>
-                    <p className={"info-text"}>Region: <span>{countryRegion}</span></p>
-                    <p className={"info-text"}>Sub Region: <span>{countrySubRegion}</span></p>
-                    <p className={"info-text"}>Capital: <span>{countryCapital}</span></p>
+            <div className={"desktop-container"}>
+                <div className={"flag-container"}>
+                    <img className={"country-flag"} src={countryFlag} alt={`${countryName}'s flag`}/>
                 </div>
-                <div className={"info-sub-container"}>
-                    <p className={"info-text"}>Top Level Domain: <span>{countryTLD}</span></p>
-                    <p className={"info-text"}>Currencies: <span>{countryCurrencies}</span></p>
-                    <p className={"info-text"}>Languages: <span>{countryLanguages.join(', ')}</span></p>
-                </div>
-            </div>
-
-            <div className={"border-container"}>
-                <p className={"border-countries-title"}>Border Countries:</p>
-                <div className={"border-countries-container"}>
-                    {borderCountries.length > 0 ? borderCountries.map((country: any) => {
-                        return <Link className={`${props.theme}-element border-link`} key={country.name.common}
-                                     to={`/country/${country.name.common}`}>
-                            {country.name.common}</Link>
-                    }) : <p>No bordering countries!</p>}
+                <div className={"desktop-info-container"}>
+                    <div className={"info-container"}>
+                        <div className={"info-sub-container"}>
+                            <p className={"country-name"}>{countryName}</p>
+                            <p className={"info-text"}>Native Name: <span>{countryNativeName}</span></p>
+                            <p className={"info-text"}>Population: <span>{countryPopulation.toLocaleString("en-US")}</span>
+                            </p>
+                            <p className={"info-text"}>Region: <span>{countryRegion}</span></p>
+                            <p className={"info-text"}>Sub Region: <span>{countrySubRegion}</span></p>
+                            <p className={"info-text"}>Capital: <span>{countryCapital}</span></p>
+                        </div>
+                        <div className={"info-sub-container"}>
+                            <p className={"info-text"}>Top Level Domain: <span>{countryTLD}</span></p>
+                            <p className={"info-text"}>Currencies: <span>{countryCurrencies}</span></p>
+                            <p className={"info-text"}>Languages: <span>{countryLanguages.join(', ')}</span></p>
+                        </div>
+                    </div>
+                    <div className={"border-container"}>
+                        <p className={"border-countries-title"}>Border Countries:</p>
+                        <div className={"border-countries-container"}>
+                            {borderCountries.length > 0 ? borderCountries.map((country: any) => {
+                                return <Link className={`${props.theme}-element border-link`} key={country.name.common}
+                                             to={`/country/${country.name.common}`}>
+                                    {country.name.common}</Link>
+                            }) : <p>No bordering countries!</p>}
+                        </div>
+                    </div>
                 </div>
             </div>
         </section>

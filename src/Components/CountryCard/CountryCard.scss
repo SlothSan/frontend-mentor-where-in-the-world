@@ -4,7 +4,6 @@
   display: flex;
   justify-content: flex-start;
   text-decoration: none;
-  margin-top: 25px;
   border-radius: 5px;
 
   .country-card-flag {
@@ -37,5 +36,9 @@
       }
     }
   }
+}
 
+.country-card:hover {
+  scale: 1.1;
+  transition: all 0.2s;
 }

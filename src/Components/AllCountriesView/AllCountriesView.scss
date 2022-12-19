@@ -20,8 +20,15 @@
   }
 
   input {
+    height: 48px;
     margin-left: 30px;
     border: none;
+    font-size: 0.875rem;
+    border-radius: 5px;
+  }
+
+  input:focus {
+    outline: none;
   }
 }
 
@@ -66,5 +73,45 @@
   .hidden {
     display: none;
     transition: all 0.2s;
+  }
+}
+
+@media (min-width: 1300px) {
+  .all-countries-view {
+    padding: 0 78px 0 78px;
+    margin: 0 auto;
+  }
+  .desktop-search-filter-container {
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+
+    .search,
+    input {
+      width: 480px;
+      height: 56px;
+    }
+
+    .dropdown-container {
+      height: 56px;
+      width: fit-content;
+
+      .dropdown {
+        padding: 29px 10px;
+      }
+
+      .dropdown-menu {
+        top: 65px;
+      }
+    }
+  }
+  .desktop-card-container {
+    margin-top: 30px;
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    gap: 30px;
   }
 }

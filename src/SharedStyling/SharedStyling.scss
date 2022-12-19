@@ -2,7 +2,7 @@ $dark-blue: hsl(209, 23%, 22%);
 $very-dark-blue-dm-bg: hsl(209, 26%, 17%);
 $very-dark-blue-lm-text: hsl(200, 15%, 8%);
 $dark-gray-lm-input: hsl(0, 0%, 52%);
-$very-light-gray-lm-bg: hsl(0, 0%, 98%);
+$very-light-gray-lm-bg: hsl(0, 0%, 94%);
 $white: hsl(0, 0%, 100%);
 
 
@@ -22,10 +22,18 @@ $white: hsl(0, 0%, 100%);
   background-color: $white;
   color: $very-dark-blue-lm-text;
   transition: all 0.2s;
+
+  ::placeholder {
+    color: $very-dark-blue-lm-text;
+  }
 }
 
 .dark-element {
   background-color: $dark-blue;
   color: $white;
   transition: all 0.2s;
+
+  ::placeholder {
+    color: $white
+  }
 }
