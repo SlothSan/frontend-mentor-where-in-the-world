@@ -1,0 +1,106 @@
+.all-countries-view {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.search {
+  margin-top: 25px;
+  width: 343px;
+  height: 48px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  border-radius: 5px;
+}
+.search svg {
+  margin-left: 25px;
+}
+.search input {
+  height: 48px;
+  margin-left: 30px;
+  border: none;
+  font-size: 0.875rem;
+  border-radius: 5px;
+}
+.search input:focus {
+  outline: none;
+}
+
+.dropdown-container {
+  margin-top: 25px;
+  display: flex;
+  flex-direction: column;
+  cursor: pointer;
+  max-width: 343px;
+  width: 100%;
+  height: fit-content;
+  position: relative;
+}
+.dropdown-container .dropdown {
+  justify-self: left;
+  width: 200px;
+  height: 48px;
+  border-radius: 5px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: relative;
+  padding: 0 10px;
+}
+.dropdown-container .dropdown-menu {
+  position: absolute;
+  top: 55px;
+  width: 200px;
+  border-radius: 5px;
+}
+.dropdown-container .dropdown-menu div {
+  padding: 10px;
+  align-items: center;
+}
+.dropdown-container .dropdown-menu p {
+  line-height: 16px;
+}
+.dropdown-container .hidden {
+  display: none;
+  transition: all 0.2s;
+}
+
+@media (min-width: 1300px) {
+  .all-countries-view {
+    padding: 0 78px 0 78px;
+    margin: 0 auto;
+  }
+  .desktop-search-filter-container {
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+  }
+  .desktop-search-filter-container .search,
+.desktop-search-filter-container input {
+    width: 480px;
+    height: 56px;
+  }
+  .desktop-search-filter-container .dropdown-container {
+    height: 56px;
+    width: fit-content;
+  }
+  .desktop-search-filter-container .dropdown-container .dropdown {
+    padding: 29px 10px;
+  }
+  .desktop-search-filter-container .dropdown-container .dropdown-menu {
+    top: 65px;
+  }
+  .desktop-card-container {
+    margin-top: 30px;
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    gap: 30px;
+  }
+}
+
+/*# sourceMappingURL=AllCountriesView.css.map */
