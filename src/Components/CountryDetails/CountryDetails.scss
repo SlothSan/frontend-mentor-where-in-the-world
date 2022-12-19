@@ -111,7 +111,7 @@
     padding: 0 78px 0 78px;
 
     .back-button {
-      margin: 60px 0 60px 0;
+      margin: 70px 0 70px 0;
       font-size: 1rem;
       width: 136px;
       height: 40px;
@@ -121,6 +121,8 @@
   .flag-container {
     justify-self: right;
     margin: 0 0 !important;
+    min-width: 560px !important;
+    min-height: 401px !important;
   }
   .country-flag {
     min-width: 560px !important;
@@ -140,15 +142,32 @@
       min-height: 401px;
       max-height: 401px;
       min-width: 600px;
-      max-width: 600px;
+      max-width: 100%;
+      margin-left: 100px;
 
 
       .info-container {
+        width: 100%;
         flex-direction: row;
+        justify-content: space-between;
 
         .info-sub-container {
-          width: 50%;
+          width: fit-content;
           padding: 0;
+
+          .country-name {
+            font-size: 2rem;
+            font-weight: 800;
+          }
+
+          .info-text {
+            font-size: 1rem;
+            line-height: 32px;
+          }
+        }
+
+        .info-sub-container:last-of-type {
+          margin-top: 83px;
         }
       }
     }
@@ -165,6 +184,13 @@
 
       .border-countries-container {
         margin: 0 0 0 10px;
+      }
+
+      .border-link {
+        min-width: 96px;
+        width: fit-content !important;
+        padding: 0 5px;
+        height: 28px;
       }
     }
   }
