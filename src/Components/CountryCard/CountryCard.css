@@ -5,6 +5,7 @@
   justify-content: flex-start;
   text-decoration: none;
   border-radius: 5px;
+  margin-top: 20px;
 }
 .country-card .country-card-flag {
   min-width: 264px;
@@ -36,6 +37,12 @@
 .country-card:hover {
   scale: 1.1;
   transition: all 0.2s;
+}
+
+@media (min-width: 1300px) {
+  .country-card {
+    margin-top: 0 !important;
+  }
 }
 
 /*# sourceMappingURL=CountryCard.css.map */
